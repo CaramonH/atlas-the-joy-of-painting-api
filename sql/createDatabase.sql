@@ -1,16 +1,18 @@
 CREATE TABLE "episodes" (
-  "id" integer PRIMARY KEY,
+  "id" SERIAL PRIMARY KEY,
   "title" varchar,
   "original_airdate" date
 );
 
 CREATE TABLE "subjects" (
-  "id" integer PRIMARY KEY,
-  "name" varchar
+  "id" SERIAL PRIMARY KEY,
+  "subject_id" VARCHAR,
+  "name" VARCHAR
 );
 
 CREATE TABLE "colors" (
-  "id" integer PRIMARY KEY,
+  "id" SERIAL PRIMARY KEY,
+  "color_id" varchar,
   "name" varchar
 );
 
@@ -31,3 +33,4 @@ ALTER TABLE "episodes_subjects" ADD FOREIGN KEY ("subject_id") REFERENCES "subje
 ALTER TABLE "episodes_colors" ADD FOREIGN KEY ("episode_id") REFERENCES "episodes" ("id");
 
 ALTER TABLE "episodes_colors" ADD FOREIGN KEY ("color_id") REFERENCES "colors" ("id");
+
