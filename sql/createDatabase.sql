@@ -1,36 +1,39 @@
 CREATE TABLE "episodes" (
-  "id" SERIAL PRIMARY KEY,
+  "episode_id" integer PRIMARY KEY,
   "title" varchar,
-  "original_airdate" date
+  "season" integer,
+  "episode" integer,
+  "colors" varchar,
+  "subjects" varchar,
+  "air_date" varchar,
+  "month" varchar,
+  "notes" varchar,
+  "image_src" varchar,
+  "youtube_src" varchar
 );
 
 CREATE TABLE "subjects" (
-  "id" SERIAL PRIMARY KEY,
-  "subject_id" VARCHAR,
-  "name" VARCHAR
+  "subject_id" integer PRIMARY KEY,
+  "subject_name" varchar
 );
 
 CREATE TABLE "colors" (
-  "id" SERIAL PRIMARY KEY,
-  "color_id" varchar,
-  "name" varchar
+  "color_id" integer PRIMARY KEY,
+  "color_name" varchar
 );
 
-CREATE TABLE "episodes_subjects" (
+CREATE TABLE "episode_subjects" (
   "episode_id" integer,
-  "subject_id" integer
+  "subject_id" integer,
+  PRIMARY KEY("episode_id", "subject_id")
 );
+ALTER TABLE "episode_subjects" ADD FOREIGN KEY ("episode_id") REFERENCES "episodes" ("episode_id");
+ALTER TABLE "episode_subjects" ADD FOREIGN KEY ("subject_id") REFERENCES "subjects" ("subject_id");
 
-CREATE TABLE "episodes_colors" (
+CREATE TABLE "episode_colors" (
   "episode_id" integer,
-  "color_id" integer
+  "color_id" integer,
+  PRIMARY KEY("episode_id", "color_id")
 );
-
-ALTER TABLE "episodes_subjects" ADD FOREIGN KEY ("episode_id") REFERENCES "episodes" ("id");
-
-ALTER TABLE "episodes_subjects" ADD FOREIGN KEY ("subject_id") REFERENCES "subjects" ("id");
-
-ALTER TABLE "episodes_colors" ADD FOREIGN KEY ("episode_id") REFERENCES "episodes" ("id");
-
-ALTER TABLE "episodes_colors" ADD FOREIGN KEY ("color_id") REFERENCES "colors" ("id");
-
+ALTER TABLE "episode_colors" ADD FOREIGN KEY ("episode_id") REFERENCES "episodes" ("episode_id");
+ALTER TABLE "episode_colors" ADD FOREIGN KEY ("color_id") REFERENCES "colors" ("color_id");
