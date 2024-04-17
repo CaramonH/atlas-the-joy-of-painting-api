@@ -16,6 +16,9 @@ Atlas is a RESTful API designed to provide resources and data related to the pop
 - **RESTful Design**: The API follows REST principles for a clear and intuitive interface.
 - **JSON Format**: Data is exchanged in JSON format for easy consumption by clients.
 
+## API Diagram
+![image](https://github.com/CaramonH/atlas-the-joy-of-painting-api/assets/115739693/c42c36ef-9f4e-4a0f-9e39-d3816e0bc33d)
+
 ## Installation
 
 To run the API locally, follow these steps:
